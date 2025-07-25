@@ -9,10 +9,10 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Calorie Tracker Backend is running!");
+  res.json({msg: "Server running!"})
 });
 
-app.get("/api/search-foods", async (req, res) => {
+app.get("/search-foods", async (req, res) => {
   const query = req.query.q;
   if (!query) {
     return res.status(400).json({ error: "Query parameter 'q' is required." });
@@ -25,7 +25,7 @@ app.get("/api/search-foods", async (req, res) => {
   }
 });
 
-app.get("/api/food-details/", async (req, res) => {
+app.get("/food-details/", async (req, res) => {
   const foodId = req.query.id;
   if (!foodId) {
     return res.status(400).json({ error: "Query parameter 'id' is required." });
