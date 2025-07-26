@@ -13,3 +13,16 @@ services:
     build: nginx/
     ports:
     - 80:80
+    volumes:
+      - cert:/data/cert
+      - www:/data/www
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - cert:/etc/letsencrypt/live/${DOMAIN}
+      - www:/var/www
+    command: certonly --webroot -w /var/www -d ${DOMAIN} --non-interactive --agree-tos
+
+volumes:
+  cert:
+  www:
