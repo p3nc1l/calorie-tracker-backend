@@ -8,6 +8,7 @@ services:
       - 5000:${PORT}
     env_file:
       - .env
+      - .env.local
   nginx:
     build: nginx/
     ports:
