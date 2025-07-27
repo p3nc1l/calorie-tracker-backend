@@ -9,8 +9,8 @@ server {
 server {
   listen 443 ssl;
   server_name __DOMAIN__;
-  ssl_certificate /data/cert/__DOMAIN__/fullchain.pem;
-  ssl_certificate_key /data/cert/__DOMAIN__/privkey.pem;
+  ssl_certificate /data/letsencrypt/live/__DOMAIN__/fullchain.pem;
+  ssl_certificate_key /data/letsencrypt/live/__DOMAIN__/privkey.pem;
   ssl_protocols TLSv1.2 TLSv1.3;
   ssl_ciphers HIGH:!aNULL:!MD5;
 }

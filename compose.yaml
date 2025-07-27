@@ -15,7 +15,7 @@ services:
     - 80:80
     - 443:443
     volumes:
-      - ./cert:/data/cert
+      - ./letsencrypt:/data/letsencrypt
       - ./nginx.conf.template:/etc/nginx/conf.d/default.conf.template
       - ./start-nginx.sh:/start-nginx.sh
     entrypoint: ./start-nginx.sh
