@@ -21,3 +21,4 @@ services:
     entrypoint: ./start-nginx.sh
     env_file:
       - .env
+      - .env.local
