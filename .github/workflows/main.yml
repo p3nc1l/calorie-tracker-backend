@@ -10,7 +10,7 @@ jobs:
     runs-on: self-hosted
     steps:
     - name: stop and remove container if currently running
-      run: docker compose down
+      run: docker compose down || true
     - uses: actions/checkout@v4
     - name: build image and start container
       run: docker compose up --build -d
