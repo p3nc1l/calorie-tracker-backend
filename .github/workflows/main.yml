@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-    - main
+      - main
   workflow_dispatch:
 
 jobs:
@@ -9,8 +9,15 @@ jobs:
     name: deploy to ec2
     runs-on: self-hosted
     steps:
-    - name: stop and remove container if currently running
-      run: docker compose down || true
-    - uses: actions/checkout@v4
-    - name: build image and start container
-      run: docker compose up --build -d
+      - uses: actions/checkout@v4
+
+      - name: Stop and remove container if currently running
+        run: docker compose down || true
+
+      - name: Create .env.local
+        run: |
+          echo "FATSECRET_CLIENT_ID=${{ secrets.FATSECRET_CLIENT_ID }}" > .env.local
+          echo "FATSECRET_CLIENT_SECRET=${{ secrets.FATSECRET_CLIENT_SECRET }}" >> .env.local
+
+      - name: Build image and start container
+        run: docker compose up --build -d
