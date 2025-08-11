@@ -6,6 +6,7 @@ This repository contains the backend for [p3nc1l/calorie-tracker](https://github
 
 - Linux running on the machine
 - Docker installed (with Docker Compose support)
+- cron installed (optional, for automated startup)
 
 ## Installation
 
@@ -15,17 +16,15 @@ If you want the app to listen on an other domain than the default one open .env 
 
 .env:
 
-    DOMAIN=preferred domain
+    DOMAIN={preferred-domain}
+
+Replace {preferred-domain} with the preferred domain
 
 ### Step 2
 
 Run the ssl certificate installer
 
     ./install-certificate.sh
-
-If the script doesn't have execute permissions run:
-
-    chmod +x ./install-certificate.sh
 
 ### Step 3
 
@@ -40,10 +39,16 @@ Open .env.local with your preferred text editor and paste the following lines
     FATSECRET_CLIENT_ID=
     FATSECRET_CLIENT_SECRET=
 
-Create an account on [Fatsecret's API](https://platform.fatsecret.com/platform-api) site, if you haven't got one already and paste your OAuth 2.0 credentials.
+Create an account on [FatSecret's API](https://platform.fatsecret.com/platform-api) site, if you haven't got one already and paste your OAuth 2.0 credentials.
 
 ### Step 5
 
-Start the Docker Compose project
+Start the app
 
-    docker compose up --build -d
+    ./start.sh
+
+### Step 6: Optional
+
+Install a cron job, which automatically starts the app on every startup
+
+    ./install-cron.sh

@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+      - test
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: deploy to ec2
+    runs-on: [self-hosted, linux, test]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create .env.local
+        run: |
+          echo "FATSECRET_CLIENT_ID=${{ secrets.FATSECRET_CLIENT_ID }}" > .env.local
+          echo "FATSECRET_CLIENT_SECRET=${{ secrets.FATSECRET_CLIENT_SECRET }}" >> .env.local
+
+      - name: Stop and remove container if currently running
+        run: docker compose down || true
+
+      - name: Build image and start container
+        run: docker compose up --build -d
