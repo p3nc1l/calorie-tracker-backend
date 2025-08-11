@@ -49,14 +49,6 @@ Start the app
 
 ### Step 6: Optional
 
-#### Add a cron job that automatically starts the app on every startup
+Install a cron job, which automatically starts the app on every startup
 
-Open the crontab
-
-    crontab -e
-
-Append it with the line:
-
-    @reboot {current-directory}/start.sh
-
-Replace {current-directory} with the current directory
+    ./install-cron.sh
