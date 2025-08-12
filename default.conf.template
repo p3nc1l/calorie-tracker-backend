@@ -18,7 +18,7 @@ server {
 
     proxy_cache my_cache;
     add_header X-Cache-Status $upstream_cache_status;
-    proxy_cache_valid any 10m;
+    proxy_cache_valid 200 10m;
     proxy_cache_methods GET;
 
     proxy_pass http://express:5000;
