@@ -15,6 +15,7 @@ jobs:
         run: |
           echo "FATSECRET_CLIENT_ID=${{ secrets.FATSECRET_CLIENT_ID }}" > .env.local
           echo "FATSECRET_CLIENT_SECRET=${{ secrets.FATSECRET_CLIENT_SECRET }}" >> .env.local
+          echo "DOMAIN=${{ secrets.TEST_DOMAIN }}" >> .env.local
 
       - name: Stop and remove container if currently running
         run: docker compose down || true
