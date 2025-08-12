@@ -6,7 +6,7 @@ This repository contains the backend for [p3nc1l/calorie-tracker](https://github
 
 - Linux running on the machine
 - Docker installed (with Docker Compose support)
-- cron installed (optional, for automated startup)
+- cron installed
 
 ## Installation
 
@@ -25,6 +25,10 @@ Replace {preferred-domain} with the preferred domain
 Run the ssl certificate installer
 
     ./install-certificate.sh
+
+Optional: For automated renewal of the certificate, run:
+
+    ./install-renewal.sh
 
 ### Step 3
 
@@ -51,4 +55,4 @@ Start the app
 
 Install a cron job, which automatically starts the app on every startup
 
-    ./install-cron.sh
+    ./install-startup.sh
